@@ -399,3 +399,131 @@ Key takeaways:
 By understanding these default configurations and implementing proper security controls, organizations can significantly reduce their attack surface and prevent common exploitation scenarios.
 
 Remember: in security, defaults are dangerous—explicit configuration is essential.
+
+---
+
+## Appendix: Comprehensive Service Port and Authentication Reference
+
+The following table provides an extensive reference of 70+ critical services categorized by function, their common ports, authentication status, and the reasoning behind their default security configuration.
+
+| Service | Common Port(s) | Unauthenticated by Default | Reason for Default Configuration |
+|---------|---------------|----------------------------|----------------------------------|
+| **Infrastructure & Containerization** |
+| Redis | 6379 | Yes | Designed for internal trusted networks; prioritizes performance and simplicity |
+| Docker API | 2375 | Yes | Designed for local development; remote API intended for trusted environments |
+| Kubernetes API Server | 8080 (insecure) | Yes | Legacy insecure port; originally designed for testing and internal communication |
+| Kubernetes etcd | 2379, 2380 | Yes | Designed as trusted backend component; assumes perimeter security |
+| Kubernetes Kubelet | 10250 | Yes | Intended for internal cluster communication only |
+| Kubernetes Dashboard | 30000-32767 | Yes (older versions) | Created for ease of use in development environments |
+| Docker Registry | 5000 | Yes | Intended for development environments; production use expected to add auth |
+| Consul | 8500 (HTTP), 8501 (HTTPS) | Yes | Designed for service-to-service communication in trusted networks |
+| Nomad | 4646 | Yes | Designed for internal use with assumed network-level protections |
+| Vagrant | 2222 | Yes | Development tool; SSH key authentication handled separately |
+| **Databases** |
+| MongoDB | 27017 | Yes (pre-v3) | Legacy design prioritized ease of use over security |
+| CouchDB | 5984 | Yes (pre-v3) | "Admin Party" mode for ease of setup and development |
+| Elasticsearch | 9200, 9300 | Yes (pre-v8) | Originally designed for trusted environments and internal use |
+| Cassandra | 9042, 7000 | Yes | Built for trusted internal network deployment |
+| InfluxDB | 8086 | Yes (pre-v2) | Optimized for quick setup and metrics collection |
+| MySQL | 3306 | No | Uses username/password, but default users may exist |
+| PostgreSQL | 5432 | No | Requires authentication but may have local trust configuration |
+| Neo4j | 7474, 7687 | Yes (pre-v4) | Designed for developer-friendly startup experience |
+| RethinkDB | 8080, 28015 | Yes | Prioritized developer experience and internal use |
+| ArangoDB | 8529 | Yes | Web interface accessible without auth for easier setup |
+| **Message Brokers & Queues** |
+| Apache Kafka | 9092 | Yes | Designed for internal network use with assumed security |
+| RabbitMQ | 5672, 15672 | No | Uses default credentials (guest/guest) instead of no auth |
+| ActiveMQ | 61616, 8161 | Mixed | Broker requires auth, web console uses default credentials |
+| NATS | 4222 | Yes | Optimized for performance in trusted environments |
+| ZeroMQ | Variable | Yes | Security handled at application layer, not transport |
+| Apache Pulsar | 6650, 8080 | Yes | Original design assumed deployment in secure environments |
+| NSQ | 4150, 4151 | Yes | Designed for simplicity in internal deployments |
+| EMQ X | 1883, 8083 | Yes | Designed for IoT scenarios with auth at application layer |
+| **Caching & In-Memory Systems** |
+| Memcached | 11211 | Yes | No authentication mechanism in core design; prioritizes speed |
+| Hazelcast | 5701 | Yes | Cluster communication designed for internal networks |
+| Ehcache | 9998 | Yes | Intended as embedded or internal component |
+| **Monitoring & Metrics** |
+| Prometheus | 9090 | Yes | Designed for internal metrics collection without overhead |
+| Grafana | 3000 | No | Uses default credentials (admin/admin) |
+| cAdvisor | 8080 | Yes | Designed as infrastructure component with assumed security |
+| Nagios | 80 | No | Web interface uses default credentials |
+| Zabbix | 10051 | Yes | Agent-server protocol without auth; web interface has auth |
+| InfluxDB Telegraf | 8125 | Yes | Metrics receiver designed for internal use |
+| Graphite | 2003, 8080 | Yes | Original design focused on metrics collection, not security |
+| StatsD | 8125 | Yes | Optimized for speed and internal metrics collection |
+| Icinga | 5665 | Yes | Agent protocol designed for internal networks |
+| **API Gateways & Load Balancers** |
+| Nginx | 80, 443 | Yes | Web server/proxy with no auth by default; auth configured per-site |
+| HAProxy | 80, 443 | Yes | Proxy layer; authentication implemented at application level |
+| Traefik | 80, 8080 | Yes | Dashboard exposed without auth for easier management |
+| Kong | 8000, 8001 | Yes | Admin API designed for protected internal access |
+| Envoy | 9901 | Yes | Admin interface assumes deployment in secure environment |
+| **Storage & File Services** |
+| MinIO | 9000 | No | Uses access/secret keys similar to S3 |
+| NFS | 2049 | Yes | Relies on IP-based authentication and Unix permissions |
+| Samba | 445 | No | Uses username/password or domain authentication |
+| GlusterFS | 24007 | Yes | Distributed storage designed for trusted networks |
+| Ceph | 6800-7300 | Yes | Internal cluster communication assumes network security |
+| WebDAV | 80, 443 | Mixed | Protocol supports auth but often deployed without it |
+| **DevOps & CI/CD Tools** |
+| Jenkins | 8080 | No | Initial setup requires unlock key, then creates admin user |
+| GitLab | 80, 443 | No | Requires user creation during setup |
+| GitHub Actions Runner | 80, 443 | No | Uses tokens for authentication |
+| TeamCity | 8111 | No | Requires setup of admin user |
+| Artifactory | 8081 | No | Uses default credentials (admin/password) |
+| Nexus Repository | 8081 | No | Uses default credentials (admin/admin123) |
+| SonarQube | 9000 | No | Uses default credentials (admin/admin) |
+| **Search Engines** |
+| Solr | 8983 | Yes | Originally designed for embedded use with no auth |
+| OpenSearch | 9200 | No | Fork of Elasticsearch with security enabled by default |
+| Sphinx | 9312, 9306 | Yes | Designed as backend component with assumed security |
+| **Service Discovery** |
+| etcd | 2379, 2380 | Yes | Key-value store designed for trusted internal networks |
+| Apache ZooKeeper | 2181 | Yes | Designed for internal cluster coordination |
+| Eureka | 8761 | Yes | Internal service registry for microservices |
+| Nacos | 8848 | No | Uses default credentials (nacos/nacos) |
+| **Configuration Management** |
+| Spring Cloud Config Server | 8888 | Yes | Configuration server often deployed without auth in dev |
+| Apache Apollo | 61680 | Yes | Management web interface without default auth |
+| **Identity Services** |
+| Keycloak | 8080 | No | Identity server with initial admin user creation |
+| OpenLDAP | 389, 636 | No | Directory service with mandatory authentication |
+| FreeIPA | 80, 443 | No | Identity management with mandatory authentication |
+| **Miscellaneous Services** |
+| RPC Bind | 111 | Yes | Legacy design from trusted network era |
+| CUPS | 631 | Yes | Print server with optional authentication |
+| Strapi | 1337 | No | CMS requiring admin setup during installation |
+| Jupyter Notebook | 8888 | Yes | Development tool using token-based auth but easily disabled |
+| Ghost | 2368 | No | CMS with setup wizard for admin user |
+| Kibana | 5601 | Yes (pre-v8) | Analytics UI for Elasticsearch following same security model |
+| Apache Airflow | 8080 | No | Uses default credentials (airflow/airflow) |
+| phpMyAdmin | 80 | No | Requires database credentials |
+| Portainer | 9000 | No | Requires admin setup on first launch |
+| RStudio Server | 8787 | No | Uses system authentication |
+| Node-RED | 1880 | Yes | Development tool designed for easier access |
+| Home Assistant | 8123 | No | Smart home platform requiring user setup |
+| Superset | 8088 | No | Analytics platform with user authentication |
+| WordPress | 80, 443 | No | CMS requiring admin setup |
+| Drupal | 80, 443 | No | CMS requiring installation and admin setup |
+| Joomla | 80, 443 | No | CMS requiring installation and admin setup |
+
+### Why Services Often Lack Authentication By Default
+
+Many critical services ship without authentication by default for several key reasons:
+
+1. **Historical Context**: Many services were designed during an era when internal networks were considered trusted, and external firewalls were the primary security control.
+
+2. **Performance Considerations**: Authentication adds overhead to every request. Services prioritizing high throughput or low latency often omit authentication.
+
+3. **Developer Experience**: Faster setup and easier debugging drive adoption. Authentication adds complexity during development.
+
+4. **Internal Component Assumption**: Many services were designed to be internal components protected by other layers of security, not directly exposed.
+
+5. **Segregation of Concerns**: Some services delegate authentication to frontend proxies or API gateways rather than implementing it themselves.
+
+6. **Configuration Over Convention**: Certain services expect operators to configure security based on their specific needs, rather than enforcing opinions.
+
+7. **Backward Compatibility**: Services maintain insecure defaults to avoid breaking existing deployments.
+
+This explains why even modern infrastructure components often require explicit security hardening, creating an "insecure by default" problem that continues to plague many deployments.
