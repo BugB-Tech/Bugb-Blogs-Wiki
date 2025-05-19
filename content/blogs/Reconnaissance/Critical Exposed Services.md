@@ -1,5 +1,4 @@
 ---
-
 title: "Critical Services, Exposed Ports, and Default Authentication"
 slug: "critical-services-exposed-ports-default-authentication"
 date: "2025-05-19"
@@ -7,7 +6,7 @@ author: "BugB Security Team"
 authorTitle: "Security Researchers"
 excerpt: "Discover how misconfigured services with default or no authentication can expose your infrastructure to attacks. This comprehensive guide reveals default ports, authentication states, and hardening tips for Redis, Kafka, Kubernetes, and other critical services."
 category: "research"
---------------------
+---
 
 # Critical Services, Exposed Ports, and Default Authentication
 
