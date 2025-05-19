@@ -210,4 +210,5 @@ Embedding **region-based CIDR mapping** into your port scanning workflow moves y
 - **Pattern discovery** (region-specific misconfig clusters)  
 - **Compelling reporting** (geographic heatmaps and demographics)  
 
-By viewing your attack surface through a geographic lens, your recon becomes both **deeper** and **smarter**—the hallmark of advanced cloud penetration testing.  
+By viewing your attack surface through a geographic lens, your recon becomes both **deeper** and **smarter**—the hallmark of advanced cloud penetration testing.
+
