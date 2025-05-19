@@ -527,3 +527,4 @@ Many critical services ship without authentication by default for several key re
 7. **Backward Compatibility**: Services maintain insecure defaults to avoid breaking existing deployments.
 
 This explains why even modern infrastructure components often require explicit security hardening, creating an "insecure by default" problem that continues to plague many deployments.
+
