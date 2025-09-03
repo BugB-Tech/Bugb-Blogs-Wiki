@@ -7,7 +7,7 @@ author: "Bugb Security Team"
 authorTitle: "Security Researchers"
 excerpt: "A clear look at the recent on-premises SharePoint attack chain dubbed ToolShell, how CVE-2025-49704 and CVE-2025-49706 were chained for RCE, and how patch-bypass CVEs CVE-2025-53770/53771 raised the stakes—plus what to patch, rotate, hunt and monitor right now."
 category: "research"
---------------------
+---
 
 # ToolShell on SharePoint: CVE-2025-49704/49706 and Patch Bypasses CVE-2025-53770/53771
 
