@@ -122,11 +122,5 @@ This is **defensive validation**—no exploit traffic—built to confirm you’r
 
 [1]: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/ "Disrupting active exploitation of on-premises SharePoint vulnerabilities | Microsoft Security Blog"
 [2]: https://www.cisa.gov/news-events/alerts/2025/07/20/update-microsoft-releases-guidance-exploitation-sharepoint-vulnerabilities "UPDATE: Microsoft Releases Guidance on Exploitation of SharePoint Vulnerabilities | CISA"
-[3]: https://msrc.microsoft.com/blog/2025/07/customer-guidance-for-sharepoint-vulnerability-cve-2025-53770/ "
-        
-        Customer guidance for SharePoint vulnerability CVE-2025-53770 | MSRC Blog
-        \| Microsoft Security Response Center 
-        
-    "
-[4]: https://nvd.nist.gov/vuln/detail/CVE-2025-53770?utm_source=chatgpt.com "CVE-2025-53770 Detail - NVD"
-[5]: https://unit42.paloaltonetworks.com/microsoft-sharepoint-cve-2025-49704-cve-2025-49706-cve-2025-53770/?utm_source=chatgpt.com "Active Exploitation of Microsoft SharePoint Vulnerabilities"
+[3]: https://nvd.nist.gov/vuln/detail/CVE-2025-53770?utm_source=chatgpt.com "CVE-2025-53770 Detail - NVD"
+[4]: https://unit42.paloaltonetworks.com/microsoft-sharepoint-cve-2025-49704-cve-2025-49706-cve-2025-53770/?utm_source=chatgpt.com "Active Exploitation of Microsoft SharePoint Vulnerabilities"
